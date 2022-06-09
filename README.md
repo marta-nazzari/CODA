@@ -19,7 +19,7 @@ Before you start using CODA, some initial setup is required:
     *  `conda create -n CODA --file CODA`<br/>
     *  `conda create -n R_CODA --file R_CODA`<br/>
    (Note: the environments you create must be named CODA and R_CODA for the script to properly work)<br/>
-   <br/>Alternatively, you can manually install the required tools on your machine. CODA uses: 
+   <br/>Alternatively, you can manually install the required tools on your machine (in which case, the calls to conda environment activation and deactivation need to be commented out). CODA uses: 
          * Cutadapt
          * FastQC 
          * miRge3.0
