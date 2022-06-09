@@ -1,14 +1,14 @@
 # NOTE FOR FIRST USE
-# Before running the script for the first time, you need to create a conda environment using the .yml file you can find at 
-# After having created the environment once, you don't need to do it anymore
-# You can use the line below on the terminal to create the environments called "CODA" and "R_CODA"
+# Before running the script for the first time, you need to create two conda environments named CODA and R_CODA from the recipes available at GitHub repository https://github.com/marta-nazzari/CODA/
+# After having created the environments once, you don't need to do it anymore
+# You can use the line below on the terminal to create the environments 
 # conda create --name CODA -f CODA.yml
 # conda create --name R_CODA -f R_CODA.yml
 
+## PARAMETERS TO BE INPUT BY THE USER
+
 # conda location (e.g. "/home/user/miniconda3/etc/profile.d/conda.sh")
 CondaLocation=""
-
-## PARAMETERS TO BE INPUT BY THE USER
 
 ## Data directories
 # Raw data directory (path to raw .fastq files)
