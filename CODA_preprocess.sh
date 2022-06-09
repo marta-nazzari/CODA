@@ -6,57 +6,53 @@
 # conda create --name R_CODA -f R_CODA.yml
 
 # conda location (e.g. "/home/user/miniconda3/etc/profile.d/conda.sh")
-CondaLocation="/home/m.nazarri/miniconda3/etc/profile.d/conda.sh"
+CondaLocation=""
 
 ## PARAMETERS TO BE INPUT BY THE USER
 
 ## Data directories
-# Raw data directory (path to raw .fastq files). 
-# Add slash at the end e.g. /path/to/files/
-DataDir="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/test_fastq_CODA_preprocessing/"
+# Raw data directory (path to raw .fastq files)
+DataDir=""
 
 # Main directory (where all subdirectories will be created)
-# Add slash at the end e.g. /path/to/folder/
-MainDir="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/preprocess_CODA_test/"
+MainDir=""
 
 # Input raw file formats (e.g. ".fastq"/".fastq.gz")
-FileFormat=".fastq.gz"
+FileFormat=""
 
 ## Specify reference genome files
-# Path to genome files (note: only file path e.g. "/path/to/genome/". Don't include filenames. Add slash at the end)
-GenomeDir="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/genome/"	
+# Path to genome files (note: only file path e.g. "/path/to/genome/". Don't include filenames)
+GenomeDir=""	
 
 # Genome name (e.g. "GRCm39")
-GenomeName="GRCh38"
+GenomeName=""
 
 # Have you already performed the reference genome indexing? 
 # Indexing="y" OR Indexing="n"
-Indexing="n"
+Indexing=""
 
 # Name of annotation .fasta file (e.g. "GRCm39.primary_assembly.genome.fa")
-# Can be left empty if indexing has already been done
-Fasta="GRCh38.primary_assembly.genome.fa"	
+# Leave empty if indexing has already been done
+Fasta=""	
 
 # Name of annotation .gtf file (e.g. "gencode.vM27.primary_assembly.annotation.gtf")
-# Can be left empty if indexing has already been done
-Gtf="gencode.v38.primary_assembly.annotation.gtf"	
+# Leave empty if indexing has already been done
+Gtf=""	
 
 # Path to miRNA library (note: only file path e.g. "/path/to/library/")
-# Add slash at the end
-miRNAPath="/share/tools/miRge3.0/"
+miRNAPath=""
 
 # Database where miRNA library was downloaded (e.g. "miRBase")
-miRNALib="miRBase"
+miRNALib=""
 
 # Organism name for miRge3.0 (can be any of human, mouse, fruitfly, nematode, rat, zebrafish) (e.g. "mouse")
-Organism="human"
+Organism=""
 
 ## Location of R script used to merge miRge3.0 files (note: only file path e.g. "/path/to/script/". Don't include filename)
-MergeMirge="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/"
+MergeMirge=""
 
 # Location of reformat.sh script (note: only file path e.g. "/path/to/script/". Don't include filename)
-# Add a slash at the end
-Reformat="/share/tools/bbmap_38_94/bbmap/"
+Reformat=""
 
 
 #########################################
