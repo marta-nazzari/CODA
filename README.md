@@ -21,11 +21,12 @@ Before you start using CODA, some initial setup is required:
    (Note: the environments you create must be named CODA and R_CODA for the script to properly work)<br/>
    <br/>Alternatively, you can manually install the required tools on your machine. CODA uses: 
          * Cutadapt
+         * FastQC 
          * miRge3.0
-         * STAR
-         * RSEM
-         * FastQC
          * MultiQC
+         * STAR
+         * R
+         * RSEM
 5. Once the files have been downloaded and the Conda environments created, you can open the `CODA_preprocess.sh` script on a text editor and edit with the necessary parameters that are user-specific (e.g. location of raw files, output directory, genome files location, etc)
 
 You can then launch the `CODA_preprocess.sh` script from the command line.<br/>
