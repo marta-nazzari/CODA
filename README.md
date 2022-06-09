@@ -1,4 +1,4 @@
-# CODA use and setup
+# CODA setup and use
 
 Dear user,<br/>CODA is a workflow developed for the preprocessing of Combo-Seq data.
 <br/>
