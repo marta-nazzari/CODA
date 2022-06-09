@@ -1,58 +1,77 @@
 # NOTE FOR FIRST USE
 # Before running the script for the first time, you need to create a conda environment using the .yml file you can find at 
 # After having created the environment once, you don't need to do it anymore
-# You can use the line below on the terminal to create the environment called "CODA"
+# You can use the line below on the terminal to create the environments called "CODA" and "R_CODA"
 # conda create --name CODA -f CODA.yml
+# conda create --name R_CODA -f R_CODA.yml
 
 # conda location (e.g. "/home/user/miniconda3/etc/profile.d/conda.sh")
-CondaLocation=""
+CondaLocation="/home/m.nazarri/miniconda3/etc/profile.d/conda.sh"
 
 ## PARAMETERS TO BE INPUT BY THE USER
 
 ## Data directories
-# Raw data directory (path to raw .fastq files)
-DataDir=""
+# Raw data directory (path to raw .fastq files). 
+# Add slash at the end e.g. /path/to/files/
+DataDir="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/test_fastq_CODA_preprocessing/"
 
 # Main directory (where all subdirectories will be created)
-MainDir=""
+# Add slash at the end e.g. /path/to/folder/
+MainDir="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/preprocess_CODA_test/"
 
 # Input raw file formats (e.g. ".fastq"/".fastq.gz")
-FileFormat=""
+FileFormat=".fastq.gz"
 
 ## Specify reference genome files
-# Path to genome files (note: only file path e.g. "/path/to/genome/". Don't include filenames)
-GenomeDir=""	
+# Path to genome files (note: only file path e.g. "/path/to/genome/". Don't include filenames. Add slash at the end)
+GenomeDir="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/genome/"	
 
 # Genome name (e.g. "GRCm39")
-GenomeName=""
-
-# Name of annotation .fasta file (e.g. "GRCm39.primary_assembly.genome.fa")
-Fasta=""	
-
-# Name of annotation .gtf file (e.g. "gencode.vM27.primary_assembly.annotation.gtf")
-Gtf=""	
+GenomeName="GRCh38"
 
 # Have you already performed the reference genome indexing? 
 # Indexing="y" OR Indexing="n"
-Indexing=""
+Indexing="n"
+
+# Name of annotation .fasta file (e.g. "GRCm39.primary_assembly.genome.fa")
+# Can be left empty if indexing has already been done
+Fasta="GRCh38.primary_assembly.genome.fa"	
+
+# Name of annotation .gtf file (e.g. "gencode.vM27.primary_assembly.annotation.gtf")
+# Can be left empty if indexing has already been done
+Gtf="gencode.v38.primary_assembly.annotation.gtf"	
 
 # Path to miRNA library (note: only file path e.g. "/path/to/library/")
-miRNAPath=""
+# Add slash at the end
+miRNAPath="/share/tools/miRge3.0/"
 
 # Database where miRNA library was downloaded (e.g. "miRBase")
-miRNALib=""
+miRNALib="miRBase"
 
 # Organism name for miRge3.0 (can be any of human, mouse, fruitfly, nematode, rat, zebrafish) (e.g. "mouse")
-Organism=""
+Organism="human"
 
 ## Location of R script used to merge miRge3.0 files (note: only file path e.g. "/path/to/script/". Don't include filename)
-MergeMirge=""
+MergeMirge="/ngs-data-2/data/SCREENED/nthy-ori_3-1_exposures/AD16_analysis/"
 
+# Location of reformat.sh script (note: only file path e.g. "/path/to/script/". Don't include filename)
+# Add a slash at the end
+Reformat="/share/tools/bbmap_38_94/bbmap/"
 
 
 #########################################
 ### DON'T CHANGE ANYTHING BELOW THIS LINE
 #########################################
+
+# This script uses the following tools: 
+# Cutadapt
+# STAR
+# miRge3.0
+# rsem
+# BBMap
+# FastQC
+# R with the libraries 'dplyr' and 'magrittr'
+
 TrimDir=${MainDir}"1_cutadapt/"
 TrimReport=${TrimDir}"cutadapt_report/"
 mirgeDir=${MainDir}"2A_mirge3/"
@@ -65,6 +84,7 @@ GTF=${GenomeDir}${Gtf}
 
 
 mkdir -p ${TrimDir}
+mkdir -p ${TrimReport}
 mkdir -p ${QC_BB}
 mkdir -p ${QC_fastQC}
 mkdir -p ${rsemDir}
@@ -72,6 +92,7 @@ mkdir -p ${mirgeDir}
 
 chmod 777 ${MainDir}
 chmod 777 ${TrimDir}
+chmod 777 ${TrimReport}
 chmod 777 ${QC_BB}
 chmod 777 ${QC_fastQC}
 chmod 777 ${rsemDir}
@@ -80,7 +101,7 @@ chmod 777 ${mirgeDir}
 
 # source conda and activate environment
 source ${CondaLocation}
-conda activate 
+conda activate CODA
 
 ### OPTIONAL - GENOME INDEXING
 # Index genome for rsem 
@@ -99,7 +120,7 @@ Samples=(*)
 
 for S in ${!Samples[@]}; do
 echo -e "Cutadapt: ${Samples[S]}" 
-SampleName=( echo ${Samples[S]} | sed 's/${FileFormat}//' )
+SampleName=$( echo ${Samples[S]} | sed "s/${FileFormat}//" )
 cutadapt -u 4 -a A{8} -j 5 --minimum-length 15 --output ${TrimDir}${SampleName}.fastq.gz ${Samples[S]} > ${TrimReport}${Samples[S]}.txt
 done
 
@@ -124,8 +145,16 @@ echo "miRNA quantification completed"
 # Find all miRNA count files
 find ${mirgeDir} -name "miR.Counts.csv" > ${MainDir}sample_list_mirge.txt
 
+conda deactivate
+conda activate R_CODA
+
 Rscript ${MergeMirge}"merge_mirge_files.R" ${MainDir}sample_list_mirge.txt ${mirgeDir}"miRNA_counts.txt"
 
+conda deactivate 
+
+conda activate CODA
+
+rm ${MainDir}sample_list_mirge.txt
 
 
 ### 2B - Gene mapping and quantification: rsem
@@ -155,7 +184,7 @@ cd ${TrimDir}
 Samples=(*fastq.gz)
 
 for S in ${!Samples[@]}; do	
-/share/tools/bbmap_38_94/bbmap/reformat.sh in1=${Samples[S]} \
+${Reformat}reformat.sh in1=${Samples[S]} \
 bhist=${QC_BB}bhist_${Samples[S]}.txt \
 qhist=${QC_BB}qhist_${Samples[S]}.txt \
 qchist=${QC_BB}qchist_${Samples[S]}.txt \
@@ -168,3 +197,5 @@ done
 fastqc -o ${QC_fastQC} ${Samples[@]}
 
 multiqc ${MainDir} --filename ${MainDir}multiqc_report.html
+
+conda deactivate
