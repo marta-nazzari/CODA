@@ -14,13 +14,15 @@ Before you start using CODA, some initial setup is required:
 3. Download the files in this GitHub repository, which include: 
     * `CODA_preprocess.sh`: this is main script for processing the Combo-Seq data 
     * `merge_mirge_files.R`: this script is called by the `CODA_preprocess.sh` script and is necessary to group together all files output by miRge3.0 (note: skiping this step causes the main step
-    * `CODA.yml`: with this file, you can create a Conda environment 
- 4. On you machine, using the CODA.yml and R_CODA.yml files, create the necessary Conda environments:
-    * `conda env create -n CODA --file CODA.yml` (note: the environment you create must be named CODA to properly work)
-    * `conda env create -n R_CODA --file R_CODA.yml` (note: the environment you create must be named R_CODA to properly work)
+    * `CODA` and `R_CODA`: with these files, you can create a Conda environment (explained at step 4) 
+ 4. On you machine, you can create the necessary Conda environments by runing the following commands in the terminal:<br/>
+    *  `conda create -n CODA --file CODA`<br/>
+    *  `conda create -n R_CODA --file R_CODA`<br/>
+   (Note: the environments you create must be named CODA and R_CODA for the script to properly work)
 5. Once the files have been downloaded and the Conda environments created, you can open the `CODA_preprocess.sh` script on a text editor and edit with the necessary parameters that are user-specific (e.g. location of raw files, output directory, genome files location, etc)
 
-You can then launch the `CODA_preprocess.sh` script from the command line.
-
+You can then launch the `CODA_preprocess.sh` script from the command line.<br/>
+<br/>
+<br/>
 Have fun!
 
