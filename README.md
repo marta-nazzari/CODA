@@ -11,7 +11,8 @@ After the first use, every time you re-run the `CODA_preprocess.sh` script, you 
 Before you start using CODA, some initial setup is required:
 1. Install conda on your machine (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 2. Download the **GTF** and **FASTA** files of your reference genome of interest (you can skip this step if you already have the indexed files for RSEM)
-3. Download the files contained in this GitHub repository, which include: 
+3. Download the miRge3.0 library for the organism(s) of interest (https://mirge3.readthedocs.io/en/latest/quick_start.html#mirge3-0-libraries)
+4. Download the files contained in this GitHub repository, which include: 
     * `CODA_preprocess.sh`: this is main script for processing the Combo-Seq data 
     * `merge_mirge_files.R`: this script is called by the `CODA_preprocess.sh` script and is necessary to group together all files output by miRge3.0 (note: skipping this step causes the `CODA_preprocess.sh` script to crash)
     * `CODA` and `R_CODA`: with these files, you can create a Conda environment (explained at step 4) 
