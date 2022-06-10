@@ -173,6 +173,8 @@ sed -i 's/\.genes.results//g' ${MainDir}genes_data.tsv
 
 ### 3 - QC: BBMap, FastQC, MultiQC
 
+echo "Performing Quality Control on trimmed files"
+
 cd ${TrimDir}
 
 Samples=(*fastq.gz)
