@@ -27,7 +27,7 @@ GenomeDir=""
 # Genome name (e.g. "GRCm39")
 GenomeName=""
 
-# Do you need to perform genome indexing?
+# Dose genome indexing need to be performed?
 # Indexing="y" (means indexing should be performed)
 # OR Indexing="n" (means indexing has already been performed and doesn't need to be done again)
 Indexing=""
