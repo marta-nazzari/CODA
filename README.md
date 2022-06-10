@@ -9,8 +9,8 @@ After the first use, every time you re-run the `CODA_preprocess.sh` script, you 
 <br/>
 <br/>
 Before you start using CODA, some initial setup is required:
-1. You need to download the **GTF** and **FASTA** files of your reference genome of interest (you can skip this step if you already have the indexed files for RSEM)
-2. You need to download the **BBMap suite** (https://sourceforge.net/projects/bbmap/files/)
+1. Download the **GTF** and **FASTA** files of your reference genome of interest (you can skip this step if you already have the indexed files for RSEM)
+2. Download the **BBMap suite** (https://sourceforge.net/projects/bbmap/files/)
 3. Download the files in this GitHub repository, which include: 
     * `CODA_preprocess.sh`: this is main script for processing the Combo-Seq data 
     * `merge_mirge_files.R`: this script is called by the `CODA_preprocess.sh` script and is necessary to group together all files output by miRge3.0 (note: skipping this step causes the `CODA_preprocess.sh` script to crash)
