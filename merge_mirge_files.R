@@ -1,10 +1,10 @@
-library(dplyr)
-library(magrittr)
+require(dplyr)
+require(magrittr)
 
 args = commandArgs()
 
 # read text file with all miRge3.0 files
-file_list = scan(args[1], what = character())
+file_list = scan(args[6], what = character())
 
 # create table with first miRNA file as column
 mir_counts = read.csv(file_list[1], header = T)
@@ -19,4 +19,4 @@ for (i in seq(2, length(file_list))) {
 mir_counts %<>% tibble::column_to_rownames(., 'miRNA')
 
 # save table
-write.table(mir_counts, file = args[2], quote = F, sep = '\t')
+write.table(mir_counts, file = args[7], quote = F, sep = '\t')
