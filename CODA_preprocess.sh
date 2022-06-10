@@ -58,13 +58,13 @@ MergeMirge=""
 #########################################
 
 # This script uses the following tools: 
-# Cutadapt
-# STAR
-# miRge3.0
-# rsem
-# BBMap
-# FastQC
-# R with the libraries 'dplyr' and 'magrittr'
+# Cutadapt v3.7
+# FastQC v0.11.9
+# miRge3.0 v0.0.9
+# MultiQC v1.12
+# R v3.6.3 with the libraries 'dplyr' and 'magrittr'
+# RSEM v1.3.3
+# STAR v2.7.10a
 
 TrimDir=${MainDir}"1_cutadapt/"
 TrimReport=${TrimDir}"cutadapt_report/"
