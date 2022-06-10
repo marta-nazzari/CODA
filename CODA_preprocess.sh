@@ -51,8 +51,6 @@ Organism=""
 ## Location of R script used to merge miRge3.0 files (note: only file path e.g. "/path/to/script/". Don't include filename)
 MergeMirge=""
 
-# Location of reformat.sh script (note: only file path e.g. "/path/to/script/". Don't include filename)
-Reformat=""
 
 
 #########################################
@@ -144,7 +142,7 @@ find ${mirgeDir} -name "miR.Counts.csv" > ${MainDir}sample_list_mirge.txt
 conda deactivate
 conda activate R_CODA
 
-Rscript ${MergeMirge}"merge_mirge_files.R" ${MainDir}sample_list_mirge.txt ${mirgeDir}"miRNA_counts.txt"
+Rscript ${MergeMirge}"merge_mirge_files.R" ${MainDir}"sample_list_mirge.txt" ${MainDir}"miRNA_counts.txt"
 
 conda deactivate 
 
@@ -168,8 +166,8 @@ done
 ## Merge rsem outputs
 cd ${rsemDir}
 FILELIST=$(find ${rsemDir} -name "*genes.results" -printf "%f\t")
-rsem-generate-data-matrix ${FILELIST} > ${rsemDir}genes_data.tsv
-sed -i 's/\.genes.results//g' ${rsemDir}genes_data.tsv
+rsem-generate-data-matrix ${FILELIST} > ${MainDir}genes_data.tsv
+sed -i 's/\.genes.results//g' ${MainDir}genes_data.tsv
 
 
 
@@ -180,7 +178,7 @@ cd ${TrimDir}
 Samples=(*fastq.gz)
 
 for S in ${!Samples[@]}; do	
-${Reformat}reformat.sh in1=${Samples[S]} \
+reformat.sh in1=${Samples[S]} \
 bhist=${QC_BB}bhist_${Samples[S]}.txt \
 qhist=${QC_BB}qhist_${Samples[S]}.txt \
 qchist=${QC_BB}qchist_${Samples[S]}.txt \
