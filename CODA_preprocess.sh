@@ -27,8 +27,9 @@ GenomeDir=""
 # Genome name (e.g. "GRCm39")
 GenomeName=""
 
-# Have you already performed the reference genome indexing? 
-# Indexing="y" OR Indexing="n"
+# Do you need to perform genome indexing?
+# Indexing="y" (means indexing should be performed)
+# OR Indexing="n" (means indexing has already been performed and doesn't need to be done again)
 Indexing=""
 
 # Name of annotation .fasta file (e.g. "GRCm39.primary_assembly.genome.fa")
