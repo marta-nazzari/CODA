@@ -9,7 +9,7 @@ After the first use, every time you re-run the `CODA_preprocess.sh` script, you 
 <br/>
 <br/>
 Before you start using CODA, some initial setup is required:
-1. Install conda on your machine (https://conda.io/projects/conda/en/latest/user-guide/install/index.html).
+1. Install conda on your machine (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 2. Download the **GTF** and **FASTA** files of your reference genome of interest (you can skip this step if you already have the indexed files for RSEM)
 3. Download the files contained in this GitHub repository, which include: 
     * `CODA_preprocess.sh`: this is main script for processing the Combo-Seq data 
