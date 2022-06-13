@@ -4,7 +4,8 @@ Dear user,<br/>CODA is a workflow developed for the preprocessing of Combo-Seq d
 <br/>
 <br/>
 ### Important!
-After the first use, every time you re-run the `CODA_preprocess.sh` script, you only need to perform **step 5**.
+After the first use, every time you re-run the `CODA_preprocess.sh` script, you only need to perform **step 5**.<br/>
+**System requirements**: since CODA uses STAR as its aligner, it requires at least 10 GB or RAM to work.
 <br/>
 <br/>
 <br/>
