@@ -28,7 +28,7 @@ Before you start using CODA, some initial setup is required:
          * R v3.6.3
          * RSEM v1.3.3
          * STAR v2.7.10a
-5. Make sure that the `CODA_preprocess.sh` script has execute and write permissions (you can do so by typing in the command line `chmod -wx /path/to/script/CODA_preprocess.sh`)
+5. Make sure that the `CODA_preprocess.sh` script has execute and write permissions (you can do so by typing in the command line `chmod 777 /path/to/script/CODA_preprocess.sh`)
 6. Once the files have been downloaded and the Conda environments created, you can open the `CODA_preprocess.sh` script on a text editor and edit with the necessary parameters that are user-specific (e.g. location of raw files, output directory, genome files location, etc)
 
 You can then launch the `CODA_preprocess.sh` script from the command line.<br/>
