@@ -100,9 +100,9 @@ conda activate CODA
 
 ### OPTIONAL - GENOME INDEXING
 # Index genome for rsem 
-if [ ${Indexing} == "n" ]; then
+if [ ${Indexing} == "y" ]; then
 rsem-prepare-reference --gtf ${GTF} --star -p 8 ${FASTA} ${GenomeDir}${GenomeName}
-Indexing="y"
+Indexing="n"
 fi
 
 
