@@ -5,10 +5,10 @@
 # conda create --name CODA -f CODA.yml
 # conda create --name R_CODA -f R_CODA.yml
 
+## PARAMETERS TO BE INPUT BY THE USER
+
 # conda location (e.g. "/home/user/miniconda3/etc/profile.d/conda.sh")
 CondaLocation=""
-
-## PARAMETERS TO BE INPUT BY THE USER
 
 ## Data directories
 # Raw data directory (path to raw .fastq files)
@@ -40,7 +40,7 @@ Fasta=""
 # Leave empty if indexing has already been done
 Gtf=""	
 
-# Path to miRNA library (note: only file path e.g. "/path/to/library/")
+# Path to miRNA library (note: only file path e.g. "/path/to/library/", do not add the organism name)
 miRNAPath=""
 
 # Database where miRNA library was downloaded (e.g. "miRBase")
