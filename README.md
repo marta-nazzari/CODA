@@ -12,6 +12,7 @@ After the first use, every time you re-run the `CODA_preprocess.sh` script, you 
 Before you start using CODA, some initial setup is required:
 1. Install conda on your machine (https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 2. Download the **GTF** and **FASTA** files of your reference genome of interest (you can skip this step if you already have the indexed files for RSEM)
+Some examples of possible sources for these files are [Gencode](https://www.gencodegenes.org/) and [Ensembl](https://ftp.ensembl.org/pub/) for mRNA and several other RNA biotypes, or [piRNAclusterDB](https://www.smallrnagroup.uni-mainz.de/piRNAclusterDB/) for piRNA.
 3. Download the miRge3.0 library for the organism(s) of interest (https://mirge3.readthedocs.io/en/latest/quick_start.html#mirge3-0-libraries)
 4. Clone this GitHub repository by typing in the terminal
 ```
